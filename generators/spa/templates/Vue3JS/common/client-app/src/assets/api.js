@@ -4,8 +4,9 @@
 }
 export
     function getResx(dnnConfig, filename, onSuccess) {
+    const url = new URL(window.location.href);
     doFetch(dnnConfig,
-        `${dnnConfig.apiBaseUrl}API/<%= fullNamespace %>/Resx/GetResx?filename=${filename}`,
+        `${url.origin}/API/<%= fullNamespace %>/Resx/GetResx?filename=${filename}`,
         undefined,
         undefined,
         onSuccess);
