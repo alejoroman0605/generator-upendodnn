@@ -2,6 +2,8 @@
     <div class="mx-3">
         <div class="text-center">
             <h2>{{ resx.Welcome }}</h2>
+            <router-link :to="`${url.pathname}/details`">Details</router-link>
+            <router-link :to="`${url.pathname}/about`" class="ml20">AboutItem</router-link>
         </div>
         <ItemIterator :items="items" @save="save" @deleteItem="deleteItem" />
     </div>
@@ -29,12 +31,7 @@ const fetchItems = async () => {
     let axiosConfig = {
         method: 'get',
         url: url,
-        headers: {
-            'Content-Type': 'application/json',
-            moduleid: dnnConfig.moduleId,
-            tabid: dnnConfig.tabId,
-            RequestVerificationToken: dnnConfig.rvt
-        }
+        headers: { 'Content-Type': 'application/json', }
     };
     axios({
         ...axiosConfig
@@ -54,12 +51,7 @@ function save(item) {
         method: item.ItemId != null ? 'put' : 'post',
         url: url,
         data: item,
-        headers: {
-            'Content-Type': 'application/json',
-            moduleid: dnnConfig.moduleId,
-            tabid: dnnConfig.tabId,
-            RequestVerificationToken: dnnConfig.rvt
-        }
+        headers: { 'Content-Type': 'application/json', }
     };
     axios({
         ...axiosConfig
@@ -77,12 +69,7 @@ function deleteItem(item) {
     let axiosConfig = {
         method: 'delete',
         url: url,
-        headers: {
-            'Content-Type': 'application/json',
-            moduleid: dnnConfig.moduleId,
-            tabid: dnnConfig.tabId,
-            RequestVerificationToken: dnnConfig.rvt
-        }
+        headers: { 'Content-Type': 'application/json', }
     };
     axios({
         ...axiosConfig
